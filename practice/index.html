@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript </title>
+</head>
+<body>
+<h1>Welcome To RestAPI</h1>
+
+<input id="title" type="text" placeholder="Enter Brand Name ">
+<br>
+<input id="product" type="text" placeholder="Enter Product Name">
+<br>
+<button id="btn-click">Submit</button>
+    
+</body>
+
+<script>
+ document.getElementById('btn-click').addEventListener('click', function (){
+
+
+    const title = document.getElementById('title').value ;
+
+    const proDuct = document.getElementById('product').value;
+
+    const post = {title: title , body : proDuct }
+
+    postToServer(post); 
+})
+
+function postToServer(postInfo){
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: JSON.stringify(postInfo),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+
+  .then((json) => console.log(json));
+
+ 
+
+}
+
+</script>
+</html>

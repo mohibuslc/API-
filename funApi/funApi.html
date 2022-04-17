@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramdom API</title>
+</head>
+<body>
+    <h3>Fun with API ... </h3>
+
+    <h1 id="api-fun"></h1>
+
+</body>
+
+<script>
+
+  function apiDatafun(){
+
+    fetch('http://www.boredapi.com/api/activity/') // APi get from Bord Api website 
+    .then(res => res.json())
+    .then(data => {
+
+        document.getElementById('api-fun').innerText= data.activity
+
+        //console.log(data)
+    });
+  }
+
+    setInterval(() => {
+        
+        apiDatafun()
+
+    }, 1000);
+</script>
+</html>

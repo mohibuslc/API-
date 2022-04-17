@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whoAmI</title>
+
+</head>
+
+<body>
+    <h3> Api Random User Showing </h3>
+
+    <h1 >USER Name:<a id="user-name" href=""> </a></h1>
+</body>
+<script>
+
+    fetch('https://randomuser.me/api/')
+        .then(res => res.json())
+        .then(data => toData(data))
+
+    function toData(data) {
+        const user = data.results[0];
+         //console.log(user)
+
+        const name = user.name;
+
+        const fullName = `${name.title} ${name.first} ${name.last}`
+
+        //console.log(fullName);
+
+        document.getElementById('user-name').innerText = fullName
+    }
+
+
+
+</script>
+
+</html>
