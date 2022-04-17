@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-App</title>
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+     <style>
+
+         body{
+
+             background: url(image/temp-img.jpg)no-repeat;
+             background-size: cover;
+             height: 100vh;
+         }
+
+
+     </style>
+</head>
+
+<div class="container">
+    <form class="col-md-6 m-auto py-5">
+        <div class="input-group mb-3">
+            <input id="city-name" type="text" class="form-control" placeholder="Enter a location for Weather ...">
+            <div class="input-group-append">
+                <button onclick="searchTemperature()" type="button" class="btn btn-danger">Search</button>
+            </div>
+        </div>
+    </form>
+    <div class="weather-status text-white text-center">
+        <img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+        <h1 id="city">Dhaka</h1>
+        <h3><span id="temperature">38.06</span>&deg;C</h3>
+        <h1 id="condition" class="lead">Clouds</h1>
+    </div>
+</div>
+<body>
+    <script>
+
+const API_KEY = `46ad7457603b9b0104e633e78cd60e16`;
+ function  searchTemperature() {
+    const city = document.getElementById('city-name').value;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayTemperature(data));
+}
+
+function setInnerText  (id, text)  {
+    document.getElementById(id).innerText = text;
+}
+
+function displayTemperature(temperature)  {
+    setInnerText('city', temperature.name);
+    setInnerText('temperature', temperature.main.temp);
+    setInnerText('condition', temperature.weather[0].main);
+    // set weather icon
+    const url = `http://openweathermap.org/img/wn/${temperature.weather[0].icon}@2x.png`;
+    const imgIcon = document.getElementById('weather-icon');
+    imgIcon.setAttribute('src', url);
+}
+    </script>
+    
+
+
+
+</body>
+</html>
