@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +9,6 @@
 <body>
     <h1> USERS Information</h1>
     <ul id="users-continer">
-
 
     </ul>
 </body>
@@ -22,11 +22,10 @@
     function userInformation(users){
 
         
-const user = users.map(s => s.email);
+    const user = users.map(s => s.email);
 
 
     for( var i= 0; i<user.length ; i++){
-
 
         const userList = user[i];
 
@@ -38,7 +37,7 @@ const user = users.map(s => s.email);
 
         ul.appendChild(li);
         
-    }
+        }
 
 
     }

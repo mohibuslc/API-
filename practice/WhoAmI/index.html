@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who AM I </title>
+</head>
+<body>
+    
+    <h3>Who AM I </h3>
+
+    <h1>USER NAME: <a id="container" href=""></a></h1>
+</body>
+
+<script>
+
+    fetch('https://randomuser.me/api/')
+    .then(res => res.json())
+    .then(data =>toDoList(data))
+
+    function toDoList (data){
+        
+        const userName = data.results[0];
+
+        const name = userName.name ;
+
+        const fullName = `${name.title} ${name.first} ${name.last}`
+
+        //console.log(fullName)
+
+        document.getElementById('container').innerText = fullName 
+    }
+</script>
+</html>
