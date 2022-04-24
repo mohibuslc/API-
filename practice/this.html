@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>"This"- Element</title>
+</head>
+<body>
+    
+    <h1> Welcome "this Element function"</h1>
+</body>
+
+<script>
+
+const myObject ={
+
+    name:'Kamal ',
+
+    lastName: 'Uddin',
+
+    salary: 12000 , 
+
+    getFullname: function(){
+
+
+        console.log(this);
+
+        return ' Mr.'+this.name
+
+    }
+
+}
+
+myObject.getFullname();
+
+const myData ={
+
+    name : ' Jamal',
+}
+
+myData.getFullname = myObject.getFullname ;
+
+console.log(myData.getFullname)
+
+myData.getFullname();
+myObject.getFullname();
+
+</script>
+</html>

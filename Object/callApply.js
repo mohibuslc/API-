@@ -18,7 +18,7 @@ const personProfile = {
     },
  
 
-    callExpance: function(amount){
+    chargeBill: function(amount){
 
         this.salary = this.salary - amount ;
 
@@ -28,6 +28,25 @@ const personProfile = {
     
 }
 
-personProfile.callExpance(1000)
+//personProfile.callExpance(1000)
 
-console.log(personProfile.salary)
+//console.log(personProfile.salary)
+
+const friendlyPerson={
+
+    firstName : 'Jamal',
+
+    secondName: 'Hero',
+
+    salary : 2000
+}
+
+// bind metod apply 
+
+const bill = personProfile.chargeBill.bind(friendlyPerson)
+
+bill(2000)
+bill(3000)
+
+
+console.log(friendlyPerson)
